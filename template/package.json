@@ -1,0 +1,50 @@
+{
+  "name": "gaon-template",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "",
+  "main": "you must change it on scripts: nodemon-swc",
+  "dependencies": {},
+  "devDependencies": {
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.92",
+    "@swc/jest": "^0.2.4",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.10.2",
+    "chokidar": "^3.5.2",
+    "concurrently": "^6.3.0",
+    "dotenv-webpack": "^7.0.3",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "swc-loader": "^0.1.15",
+    "webpack": "^5.56.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
+  },
+  "scripts": {
+    "server": "webpack serve --open",
+    "dev": "run() { webpack; concurrently -p \"none\" --kill-others \"npm run webpack:dev\" \"npm run nodemon-swc\"; }; run",
+    "build": "run() { npm run webpack:pro; cp public/* build; }; run",
+    "test": "jest --detectOpenHandles --forceExit",
+    "webpack:dev": "webpack --mode development -w",
+    "webpack:pro": "webpack --mode production",
+    "swc:out": "npx swc src -d build",
+    "swc:watch": "npx swc -w src -d build",
+    "nodemon-swc": "nodemon -x \"clear;node\" -w build \"./build/bundle.js\""
+  },
+  "keywords": [],
+  "author": "just-do-halee <just.do.halee@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/you/project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/you/project/issues"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
