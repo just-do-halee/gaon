@@ -1,15 +1,16 @@
 'use strict';
 
-const path = require('path');
-const Dotenv = require('dotenv-webpack');
+const gaon = require('./gaon.config');
+
+const ENTRY = 'app.ts';
+const MODE = gaon.modes.dev;
+const PORT = 3000;
 
 module.exports = {
-  mode: 'development',
-  // Enable source map
-  devtool: 'source-map',
-  entry: path.join(__dirname, 'src', 'app.ts'),
+  mode: MODE,
+  entry: gaon.rootDir('src/' + ENTRY),
   output: {
-    path: path.join(__dirname, 'build'),
+    path: gaon.rootDir('build'),
     filename: 'bundle.js',
   },
   resolve: {
@@ -18,22 +19,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.ts(x?)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'swc-loader', // you would put swc-loader
+          loader: 'swc-loader',
           options: {
-            // Enable source map
-            sourceMap: true,
-            // This makes swc-loader invoke swc synchronously.
+            sourceMap: true, // *
             sync: true,
           },
         },
       },
     ],
   },
-  plugins: [new Dotenv()],
+  devtool: 'source-map', // *
+  plugins: gaon.getPlugins(MODE),
   devServer: {
-    port: 3000,
+    port: PORT,
   },
 };

@@ -13,7 +13,6 @@
     "@types/node": "^16.10.2",
     "chokidar": "^3.5.2",
     "concurrently": "^6.3.0",
-    "dotenv-webpack": "^7.0.3",
     "jest": "^27.2.4",
     "nodemon": "^2.0.13",
     "swc-loader": "^0.1.15",
@@ -22,7 +21,7 @@
     "webpack-dev-server": "^4.3.0"
   },
   "scripts": {
-    "server": "webpack serve --open",
+    "start": "webpack serve --open",
     "dev": "run() { webpack; concurrently -p \"none\" --kill-others \"npm run webpack:dev\" \"npm run nodemon-swc\"; }; run",
     "build": "run() { npm run webpack:pro; cp public/* build; }; run",
     "test": "jest --detectOpenHandles --forceExit",
