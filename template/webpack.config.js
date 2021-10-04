@@ -14,13 +14,14 @@ module.exports = {
     filename: 'bundle.js',
   },
   resolve: {
+    modules: ['node_modules'],
     extensions: ['.tsx', '.ts', '.js'],
   },
   module: {
     rules: [
       {
         test: /\.ts(x?)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(bower_components)/,
         use: {
           loader: 'swc-loader',
           options: {

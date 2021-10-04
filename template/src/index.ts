@@ -1,8 +1,14 @@
-export const sum = (a: number, b: number): number => {
-  if ('development' === process.env.MODE) {
+import { Result, Ok, Err } from 'rusultts';
+
+export const divide = (a: number, b: number): Result<number> => {
+  if ('development' === process.env.NODE_ENV) {
     console.log('blazingly fast!');
   }
-  return a + b;
+  if (b === 0) {
+    return Err.new(`b cannot be 0`, null);
+  }
+  return Ok.new(a / b);
 };
 
-sum(2, 5);
+const res = divide(4, 2).unwrap();
+console.log(`4 / 2 = ${res}`);

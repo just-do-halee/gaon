@@ -4,7 +4,9 @@
   "license": "MIT",
   "description": "",
   "main": "you must change it on scripts: nodemon-swc",
-  "dependencies": {},
+  "dependencies": {
+    "rusultts": "^1.0.0"
+  },
   "devDependencies": {
     "@swc/cli": "^0.1.51",
     "@swc/core": "^1.2.92",
@@ -25,6 +27,7 @@
     "dev": "run() { webpack; concurrently -p \"none\" --kill-others \"npm run webpack:dev\" \"npm run nodemon-swc\"; }; run",
     "build": "run() { npm run webpack:pro; cp public/* build; }; run",
     "test": "jest --detectOpenHandles --forceExit",
+    "cover": "jest --ci --coverage --maxWorkers=2 --detectOpenHandles --forceExit ",
     "webpack:dev": "webpack --mode development -w",
     "webpack:pro": "webpack --mode production",
     "swc:out": "npx swc src -d build",
