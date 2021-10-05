@@ -21,7 +21,7 @@ module.exports = {
     rules: [
       {
         test: /\.ts(x?)$/,
-        exclude: /(bower_components)/,
+        exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'swc-loader',
           options: {

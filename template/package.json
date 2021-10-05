@@ -5,7 +5,7 @@
   "description": "",
   "main": "you must change it on scripts: nodemon-swc",
   "dependencies": {
-    "rusultts": "^1.0.0"
+    "rusultts": "^1.1.3"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.51",
